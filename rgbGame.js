@@ -8,7 +8,7 @@ var colors = [];
 var bkgdColor = "#232323";
 
 // The background color of the h1 header
-var h1BkgdColor = document.querySelector("h1").style.background;
+var h1BkgdColor = document.querySelector("h1").style["background-color"];
 
 // Min number of squares to start a game
 var baseNumSquares = 3;
@@ -107,7 +107,7 @@ function resetGame(){
 	colorDisplay.textContent = goalColor.toUpperCase();
 
 	// Change h1 head backgroud back to default
-	h1.style.background = h1BkgdColor;
+	h1.style["background-color"] = h1BkgdColor;
 
 	// Change browser display for reset button
 	// to default
@@ -122,7 +122,7 @@ function resetGame(){
 // match 'color'
 function changeColors(color){
 	for (var i = 0; i < colors.length; i++) {
-		if(squares[i].style.background !== color) {squares[i].style.background = color;
+		if(squares[i].style["background-color"] !== color) {squares[i].style["background-color"] = color;
 		}
 	}
 }
@@ -165,14 +165,14 @@ function updateSquareDisplay(){
 		if(colors[i]){
 
 			// Add color to square
-			squares[i].style.background = colors[i];
+			squares[i].style["background-color"] = colors[i];
 			squares[i].style.display = "block";
 
 			// Add click listeners to square
 			squares[i].addEventListener("click", function(){
 
 				// Grab color of clicked square
-				var clickedColor = this.style.background;
+				var clickedColor = this.style["background-color"];
 
 				// Compare square's color to goal color
 				// If matching, praise the user and change all
@@ -180,13 +180,13 @@ function updateSquareDisplay(){
 				if(clickedColor === goalColor){
 					messageDisplay.textContent = "Correct!";
 					changeColors(goalColor);
-					h1.style.background = goalColor;
+					h1.style["background-color"] = goalColor;
 					resetButton.textContent = "Play again?";
 
 				// Otherwise, encourage user and fade out
 				// the square 
 				} else {
-					this.style.background = bkgdColor;
+					this.style["background-color"] = bkgdColor;
 					messageDisplay.textContent = "Try again!"
 				}
 			});
@@ -197,4 +197,3 @@ function updateSquareDisplay(){
 		}
 	}
 }
-
